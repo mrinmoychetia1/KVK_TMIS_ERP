@@ -1,0 +1,58 @@
+/**
+ * ==========================================================
+ * Settings Repository
+ * Enterprise Foundation v1.0
+ * ==========================================================
+ */
+
+class SettingsRepository extends BaseRepository {
+
+  constructor() {
+
+    super(SHEET.SETTINGS);
+
+  }
+
+  getValue(key) {
+
+    const record = this.findBy("Key", key);
+
+    return record ? record.Value : null;
+
+  }
+
+  setValue(key, value) {
+
+    const headers = this.getHeaders();
+
+    const data = this.getAll();
+
+    const rowIndex = data.findIndex(r => r.Key === key);
+
+    if (rowIndex >= 0) {
+
+      const actualRow = rowIndex + 2;
+
+      const valueColumn = headers.indexOf("Value") + 1;
+
+      this.sheet
+        .getRange(actualRow, valueColumn)
+        .setValue(value);
+
+      return;
+
+    }
+
+    this.insert({
+
+      Key: key,
+
+      Value: value,
+
+      Description: ""
+
+    });
+
+  }
+
+}

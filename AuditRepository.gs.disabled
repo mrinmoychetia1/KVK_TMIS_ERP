@@ -1,0 +1,38 @@
+/**
+ * ==========================================================
+ * Audit Repository
+ * Enterprise Foundation v1.0
+ * ==========================================================
+ */
+
+class AuditRepository extends BaseRepository {
+
+  constructor() {
+
+    super(SHEET.AUDIT);
+
+  }
+
+  log(user, module, action, remarks = "") {
+
+    this.insert({
+
+      LogID: Utilities.getUuid(),
+
+      DateTime: new Date(),
+
+      User: user,
+
+      Module: module,
+
+      Action: action,
+
+      Status: "SUCCESS",
+
+      Remarks: remarks
+
+    });
+
+  }
+
+}

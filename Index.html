@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+
+  <base target="_top">
+
+  <meta charset="UTF-8">
+
+  <title>KVK TMIS ERP</title>
+
+  <style>
+
+    body{
+
+      font-family:Arial,sans-serif;
+
+      margin:40px;
+
+      background:#f4f6f9;
+
+    }
+
+    .card{
+
+      max-width:700px;
+
+      background:white;
+
+      padding:25px;
+
+      border-radius:10px;
+
+      box-shadow:0 2px 8px rgba(0,0,0,.15);
+
+    }
+
+    button{
+
+      padding:10px 20px;
+
+      cursor:pointer;
+
+      margin-top:20px;
+
+    }
+
+    pre{
+
+      background:#f7f7f7;
+
+      padding:15px;
+
+      margin-top:20px;
+
+      overflow:auto;
+
+    }
+
+  </style>
+
+</head>
+
+<body>
+
+<div class="card">
+
+<h2>KVK TMIS ERP</h2>
+
+<p>Enterprise Foundation Version 1.0</p>
+
+<button onclick="install()">
+
+Install ERP Foundation
+
+</button>
+
+<pre id="output"></pre>
+
+</div>
+
+<script>
+
+function install(){
+
+google.script.run
+
+.withSuccessHandler(function(res){
+
+document.getElementById("output").textContent=
+
+JSON.stringify(res,null,2);
+
+})
+
+.installSystem();
+
+}
+
+</script>
+
+</body>
+
+</html>
