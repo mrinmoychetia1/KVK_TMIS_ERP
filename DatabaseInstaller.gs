@@ -1,38 +1,41 @@
 /**
  * ==========================================================
+ * KVK TMIS ERP
  * Database Installer
- * Enterprise Foundation v1.0
+ * SCD-002 Package 2.1B
  * ==========================================================
  */
 
-class DatabaseInstaller {
+const DatabaseInstaller = (() => {
 
-  static install() {
+  function install() {
 
-    const db = SpreadsheetService.createDatabase();
+    const spreadsheet = SpreadsheetService.createDatabase();
 
     Object.keys(DATABASE_SCHEMA).forEach(sheetName => {
 
-      let sheet = db.getSheetByName(sheetName);
+      let sheet = spreadsheet.getSheetByName(sheetName);
 
       if (!sheet) {
-
-        sheet = db.insertSheet(sheetName);
-
+        sheet = spreadsheet.insertSheet(sheetName);
       }
 
+      const headers = DATABASE_SCHEMA[sheetName];
+
       if (sheet.getLastRow() === 0) {
-
-        sheet.appendRow(
-          DATABASE_SCHEMA[sheetName]
-        );
-
+        sheet.appendRow(headers);
       }
 
     });
 
-    return db;
+    Seeder.seed();
+
+    return spreadsheet;
 
   }
 
-}
+  return {
+    install
+  };
+
+})();

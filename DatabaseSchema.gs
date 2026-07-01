@@ -1,49 +1,94 @@
 /**
  * ==========================================================
- * Database Schema Definition
- * Enterprise Foundation v1.0
+ * KVK TMIS ERP
+ * Database Schema
+ * SCD-002 Package 2.1B
+ * FINAL
  * ==========================================================
  */
 
 const DATABASE_SCHEMA = {
 
   Users: [
+
     "UserID",
-    "Name",
+
+    "Username",
+
+    "FullName",
+
     "Designation",
+
     "Email",
+
     "Mobile",
+
+    "PasswordHash",
+
+    "PasswordSalt",
+
     "Role",
+
     "Status",
+
+    "MustChangePassword",
+
+    "LastLogin",
+
     "CreatedOn",
-    "ModifiedOn"
+
+    "CreatedBy",
+
+    "ModifiedOn",
+
+    "ModifiedBy"
+
   ],
 
   Roles: [
+
     "RoleID",
+
     "RoleName",
+
     "Description"
+
   ],
 
   Settings: [
+
     "Key",
+
     "Value",
+
     "Description"
+
   ],
 
   AuditLogs: [
+
     "LogID",
+
     "DateTime",
+
     "User",
+
     "Module",
+
     "Action",
+
     "Status",
+
     "Remarks"
+
   ],
 
   Sequences: [
+
     "Module",
+
     "CurrentNumber"
+
   ]
 
 };

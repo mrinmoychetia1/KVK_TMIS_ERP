@@ -1,5 +1,6 @@
 /**
  * ==========================================================
+ * KVK TMIS ERP
  * Enterprise Installer
  * ==========================================================
  */
@@ -16,24 +17,18 @@ function installSystem() {
 
     AppConfig.set(PROPERTY.INSTALLED, "YES");
 
-    Logger.info("Enterprise Foundation installed.");
+    Logger.info("System installation completed.");
 
     return Response.success(
-      "Enterprise Foundation installed successfully."
+      "KVK TMIS ERP installed successfully."
     );
 
   }
-
   catch (error) {
 
-    Logger.error(
-      "Installation failed.",
-      error
-    );
+    Logger.error("Installation failed.", error);
 
-    return Response.failure(
-      error.message
-    );
+    return Response.failure(error.message);
 
   }
 
